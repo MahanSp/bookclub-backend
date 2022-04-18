@@ -64,13 +64,14 @@ export const AuthMutation = extendType({
                 phonenumber:stringArg(),
             },
             async resolve(parent, args, context) {
-                const { email, lastname,firstname,birthday,city,country,phonenumber } = args;
+                const { email, lastname,firstname, } = args;
                 // 2
                 const password = await bcrypt.hash(args.password, 10);
 
                 // 3
                 const user = await context.prisma.user.create({
-                    data: { email, lastname,firstname,birthday,city,country,phonenumber, password },
+                    data: { email, lastname,firstname,birthday: args.birthday != null ? args.birthday : "",city: args.city != null ? args.city : "",
+                    country: args.country != null ? args.country : "",phonenumber: args.phonenumber != null ? args.phonenumber : "", password },
                 });
 
                 // 4

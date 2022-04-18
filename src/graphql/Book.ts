@@ -32,7 +32,7 @@ export const BookMutation = extendType({
                 translator: stringArg(),
             },
             resolve(parent, args, context) {   
-                const { title, author,translator } = args;
+                const { title, author } = args;
                 const { userId } = context;
 
                 if (!userId) {  // 1
@@ -43,7 +43,7 @@ export const BookMutation = extendType({
                     data: {
                         title,
                         author,
-                        translator,
+                        translator: args.translator != null ? args.translator: "",
                         users: { connect: { id: userId } },  // 2
                     },
                 });

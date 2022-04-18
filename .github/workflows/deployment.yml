@@ -1,4 +1,4 @@
-name: deploy-hackernews-app-heroku                       # 1
+name: bookclub-backend                       # 1
 
 on:
   push:

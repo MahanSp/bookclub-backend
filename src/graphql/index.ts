@@ -1,4 +1,4 @@
 export * from "./User"; 
 export * from "./Book";
-export * from "./invite"; 
+export * from "./Invite"; 
 export * from "./Auth";
